@@ -1,0 +1,7 @@
+*.pdf
+target
+.directory
+*.aux
+*.log
+*.synctex.gz
+/doc/java_docs
