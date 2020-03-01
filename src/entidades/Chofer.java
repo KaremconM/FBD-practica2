@@ -2,8 +2,12 @@ package entidades;
 import java.util.Calendar;
 
 public class Chofer extends Asociado{
-    private int choferCount = 0;
+    private static int choferCount;
     private int choferId;
+
+    public Chofer(){
+        this.choferId = choferCount+1;
+    }
 
     public String toString(){
         String[] properties = {"choferId", "nombre", "apellidoMaterno", "apellidoPaterno", "foto", "email", "calle",
@@ -100,5 +104,9 @@ public class Chofer extends Asociado{
                 throw new IllegalArgumentException(property+" is not defined in Chofer");
         }
         return this;
+    }
+
+    public static void setTableIndex(int index){
+        choferCount = index;
     }
 }

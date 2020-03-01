@@ -2,9 +2,13 @@ package entidades;
 import java.util.Calendar;
 
 public class Dueño extends Asociado{
-    private int dueñoCount = 0;
+    private static int dueñoCount;
     private int dueñoId;
     private String RFC;
+
+    public Dueño(){
+        this.dueñoId = dueñoCount+1;
+    }
 
     public String toString(){
         String[] properties = {"dueñoId", "nombre", "apellidoMaterno", "apellidoPaterno", "foto", "email", "calle",
@@ -106,5 +110,9 @@ public class Dueño extends Asociado{
                 throw new IllegalArgumentException(property+" is not defined in Dueño");
         }
         return this;
+    }
+
+    public static void setTableIndex(int index){
+        dueñoCount = index;
     }
 }
