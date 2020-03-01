@@ -1,13 +1,14 @@
 package entidades;
 import java.util.Calendar;
 
-public class Chofer extends Asociado{
-    private int choferCount = 0;
-    private int choferId;
+public class Dueño extends Asociado{
+    private int dueñoCount = 0;
+    private int dueñoId;
+    private String RFC;
 
     public String toString(){
-        String[] properties = {"choferId", "nombre", "apellidoMaterno", "apellidoPaterno", "foto", "email", "calle",
-        "colonia", "municipio", "estado", "numeroExterior", "numeroInterior", "numLicencia", "fechaInicio"};
+        String[] properties = {"dueñoId", "nombre", "apellidoMaterno", "apellidoPaterno", "foto", "email", "calle",
+        "colonia", "municipio", "estado", "numeroExterior", "numeroInterior", "numLicencia", "fechaInicio", "RFC"};
         String prettyPrinted = "";
         for(String p : properties){
             prettyPrinted += this.get(p)+", ";
@@ -18,8 +19,8 @@ public class Chofer extends Asociado{
 
     public String get(String property){
         switch (property){
-            case "choferId":
-                return this.choferId+"";
+            case "dueñoId":
+                return this.dueñoId+"";
             case "nombre":
                 return this.nombre;
             case "apellidoMaterno":
@@ -46,12 +47,14 @@ public class Chofer extends Asociado{
                 return this.numLicencia;
             case "fechaInicio":
                 return this.fechaInicio.YEAR+"-"+this.fechaInicio.MONTH+"-"+this.fechaInicio.DAY_OF_MONTH;
+            case "RFC":
+                return this.RFC;
             default:
-                throw new IllegalArgumentException(property+" is not defined in Chofer");
+                throw new IllegalArgumentException(property+" is not defined in Dueño");
         }
     }
 
-    public Chofer set(String property, String value){
+    public Dueño set(String property, String value){
         switch (property){
             case "nombre":
                 this.nombre = value;
@@ -92,8 +95,10 @@ public class Chofer extends Asociado{
                 newDate.clear();
                 newDate.set(Integer.parseInt(dateData[0]), Integer.parseInt(dateData[1]), Integer.parseInt(dateData[2]));
                 this.fechaInicio = newDate;
+            case "RFC":
+                this.RFC = value;
             default:
-                throw new IllegalArgumentException(property+" is not defined in Chofer");
+                throw new IllegalArgumentException(property+" is not defined in Dueño");
         }
         return this;
     }
