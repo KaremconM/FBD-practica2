@@ -46,7 +46,7 @@ public class Dueño extends Asociado{
             case "numLicencia":
                 return this.numLicencia;
             case "fechaInicio":
-                return this.fechaInicio.YEAR+"-"+this.fechaInicio.MONTH+"-"+this.fechaInicio.DAY_OF_MONTH;
+                return this.fechaInicio.get(fechaInicio.YEAR)+"-"+this.fechaInicio.get(fechaInicio.MONTH)+"-"+this.fechaInicio.get(fechaInicio.DAY_OF_MONTH);
             case "RFC":
                 return this.RFC;
             default:
@@ -85,18 +85,23 @@ public class Dueño extends Asociado{
                 break;
             case "numeroExterior":
                 this.numeroExterior = Integer.parseInt(value);
+                break;
             case "numeroInterior":
                 this.numeroInterior = Integer.parseInt(value);
+                break;
             case "numLicencia":
                 this.numLicencia = value;
+                break;
             case "fechaInicio":
                 String[] dateData = value.split("-");
                 Calendar newDate = Calendar.getInstance();
                 newDate.clear();
                 newDate.set(Integer.parseInt(dateData[0]), Integer.parseInt(dateData[1]), Integer.parseInt(dateData[2]));
                 this.fechaInicio = newDate;
+                break;
             case "RFC":
                 this.RFC = value;
+                break;
             default:
                 throw new IllegalArgumentException(property+" is not defined in Dueño");
         }
