@@ -23,6 +23,10 @@ public class Practica02 {
                     System.out.println("Entrada creada");
                     break;
                 case 5:
+                    handleDrop();
+                    System.out.println("Tabla eliminada");
+                    break;
+                case 6:
                     System.out.println("Saliendo...");
                     doActions = false;
                     break;
@@ -39,7 +43,8 @@ public class Practica02 {
         System.out.println("2.- Modificar una entrada");
         System.out.println("3.- Borrar una entrada");
         System.out.println("4.- Crear una entrada");
-        System.out.println("5.- Salir");
+        System.out.println("5.- Borrar una tabla");
+        System.out.println("6.- Salir");
     }
 
     public static int getAction(){
@@ -137,6 +142,34 @@ public class Practica02 {
                     break;*/
                 default:
                     System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
+                    action = getAction();
+            }
+        }
+    }
+
+    public static void handleDrop(){
+        System.out.println("Selecciona la tabla que quieres eliminar");
+        System.out.println("1.- Chofer");
+        System.out.println("2.- Dueño");
+        System.out.println("3.- Taxi");
+        boolean validAction = false;
+        int action = getAction();
+        while(!validAction){
+            switch(action){
+                case 1:
+                    FileActions.dropTable("Chofer");
+                    validAction = true;
+                    break;
+                case 2:
+                    FileActions.dropTable("Dueño");
+                    validAction = true;
+                    break;
+                /*case 3:
+                    FileActions.dropTable("Taxi");
+                    break;*/
+                default:
+                    System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
+                    action = getAction();
             }
         }
     }

@@ -4,7 +4,7 @@ import java.util.Calendar;
 public class Chofer extends Asociado{
     private static int choferCount;
     public static String fileName = "ChoferData.csv";
-    public static String[] properties = {"choferId", "nombre", "apellidoMaterno", "apellidoPaterno", "foto", "email", "calle",
+    public static String[] properties = {"choferId", "nombre", "apellidoPaterno", "apellidoMaterno", "foto", "email", "calle",
     "colonia", "municipio", "estado", "numeroExterior", "numeroInterior", "numLicencia", "fechaInicio"};
     private int choferId;
 

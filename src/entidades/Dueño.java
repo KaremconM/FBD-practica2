@@ -4,7 +4,7 @@ import java.util.Calendar;
 public class Dueño extends Asociado{
     private static int dueñoCount;
     public static String fileName = "DueñoData.csv";
-    public static String[] properties = {"dueñoId", "nombre", "apellidoMaterno", "apellidoPaterno", "foto", "email", "calle",
+    public static String[] properties = {"dueñoId", "nombre", "apellidoPaterno", "apellidoMaterno", "foto", "email", "calle",
     "colonia", "municipio", "estado", "numeroExterior", "numeroInterior", "numLicencia", "fechaInicio", "RFC"};
     private int dueñoId;
     private String RFC;
