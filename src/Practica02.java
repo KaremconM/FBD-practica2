@@ -18,10 +18,11 @@ public class Practica02 {
                     break;
                 case 2:
                     handleEdit();
+                    System.out.println("Entrada editada");
                     break;
                 case 3:
-                    System.out.println(action);
-                    System.out.println("Entrada editada");
+                    handleDestroy();
+                    System.out.println("Entrada eliminada");
                     break;
                 case 4:
                     handleCreate();
@@ -251,4 +252,40 @@ public class Practica02 {
         FileActions.editEntry(tableName, newData, id);
     }
 
+    public static void handleDestroy(){
+        System.out.println("Selecciona la tabla en la que quieres borrar una entrada");
+        System.out.println("1.- Chofer");
+        System.out.println("2.- Dueño");
+        System.out.println("3.- Taxi");
+        boolean validAction = false;
+        int action = getAction();
+        String[] properties = {};
+        String tableName = "";
+        while(!validAction){
+            switch(action){
+                case 1:
+                    tableName = "Chofer";
+                    properties = Chofer.properties;
+                    validAction = true;
+                    break;
+                case 2:
+                    tableName = "Dueño";
+                    properties = Dueño.properties;
+                    validAction = true;
+                    break;
+                /*case 3:
+                    tableName = "Taxi"
+                    properties = Taxi.properties;
+                    validAction = true;
+                    break;*/
+                default:
+                    System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
+                    action = getAction();
+            }
+        }
+
+        System.out.println("Ingresa el ID del elemento a borrar");
+        int id = getAction();
+        FileActions.destroyEntry(tableName, id);
+    }
 }

@@ -168,4 +168,39 @@ public class FileActions{
             return false;
         }
     }
+
+    public static boolean destroyEntry(String tableName, int id){
+        try{
+            File table = new File(tableName+"Data.csv");
+            Scanner tableReader = new Scanner(table);
+            String fileContent = tableReader.nextLine()+"\n";
+            boolean lineFound = false;
+            while (tableReader.hasNextLine()){
+                String currentLine = tableReader.nextLine();
+                int lineId = Integer.parseInt(currentLine.split(",")[0]);
+                if(lineId != id){
+                    fileContent += currentLine+"\n";
+                }else{
+                    lineFound = true;
+                }
+            }
+            tableReader.close();
+            if(lineFound){
+                FileWriter tableWriter = new FileWriter(table);
+                String[] fileLines = fileContent.split("\n");
+                for(String l : fileLines){
+                    tableWriter.write(l+"\n");
+                }
+                tableWriter.close();
+                return true;
+            }else{
+                System.out.println("No se encontró una entrada con el id: "+id);
+                return false;
+            }
+
+        }catch(IOException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
