@@ -3,6 +3,9 @@ import java.util.Calendar;
 
 public class Dueño extends Asociado{
     private static int dueñoCount;
+    public static String fileName = "DueñoData.csv";
+    public static String[] properties = {"dueñoId", "nombre", "apellidoMaterno", "apellidoPaterno", "foto", "email", "calle",
+    "colonia", "municipio", "estado", "numeroExterior", "numeroInterior", "numLicencia", "fechaInicio", "RFC"};
     private int dueñoId;
     private String RFC;
 
@@ -11,8 +14,6 @@ public class Dueño extends Asociado{
     }
 
     public String toString(){
-        String[] properties = {"dueñoId", "nombre", "apellidoMaterno", "apellidoPaterno", "foto", "email", "calle",
-        "colonia", "municipio", "estado", "numeroExterior", "numeroInterior", "numLicencia", "fechaInicio", "RFC"};
         String prettyPrinted = "";
         for(String p : properties){
             prettyPrinted += this.get(p)+", ";

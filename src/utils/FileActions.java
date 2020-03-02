@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class FileActions{
-    public static void createFiles(){
+    public static boolean createFiles(){
         try {
             File index = new File("tableIndex.csv");
             if (index.createNewFile()) {
@@ -21,7 +21,7 @@ public class FileActions{
             File chofer = new File("ChoferData.csv");
             if (chofer.createNewFile()) {
                 FileWriter choferWriter = new FileWriter("ChoferData.csv");
-                choferWriter.write("choferId,nombre,apellidoMaterno,apellidoPaterno,foto,email,calle,colonia,municipio,estado,numeroExterior,numeroInterior,numLicencia,fechaInicio");
+                choferWriter.write("choferId,nombre,apellidoMaterno,apellidoPaterno,foto,email,calle,colonia,municipio,estado,numeroExterior,numeroInterior,numLicencia,fechaInicio\n");
                 choferWriter.close();
                 System.out.println("File created: " + chofer.getName());
             }else{
@@ -31,18 +31,31 @@ public class FileActions{
             File dueño = new File("DueñoData.csv");
             if (dueño.createNewFile()) {
                 FileWriter dueñoWriter = new FileWriter("DueñoData.csv");
-                dueñoWriter.write("dueñoId,nombre,apellidoMaterno,apellidoPaterno,foto,email,calle,colonia,municipio,estado,numeroExterior,numeroInterior,numLicencia,fechaInicio,RFC");
+                dueñoWriter.write("dueñoId,nombre,apellidoMaterno,apellidoPaterno,foto,email,calle,colonia,municipio,estado,numeroExterior,numeroInterior,numLicencia,fechaInicio,RFC\n");
                 dueñoWriter.close();
                 System.out.println("File created: " + dueño.getName());
             }else{
                 System.out.println("DueñoData file already exists.");
             }
+
+            /*File dueño = new File("DueñoData.csv");
+            if (dueño.createNewFile()) {
+                FileWriter dueñoWriter = new FileWriter("DueñoData.csv");
+                dueñoWriter.write("dueñoId,nombre,apellidoMaterno,apellidoPaterno,foto,email,calle,colonia,municipio,estado,numeroExterior,numeroInterior,numLicencia,fechaInicio,RFC");
+                dueñoWriter.close();
+                System.out.println("File created: " + dueño.getName());
+            }else{
+                System.out.println("DueñoData file already exists.");
+            }*/
+
+            return true;
         }catch (IOException e){
             e.printStackTrace();
+            return false;
         }
     }
 
-    public static void setTableIndex(){
+    public static boolean setTableIndex(){
         try{
             File index = new File("tableIndex.csv");
             Scanner indexReader = new Scanner(index);
@@ -51,10 +64,25 @@ public class FileActions{
 
             Chofer.setTableIndex(Integer.parseInt(indexData[0]));
             Dueño.setTableIndex(Integer.parseInt(indexData[1]));
-            //Taxi.setTableIndex(Integer.parseInt(indexData[1]));
-
+            //Taxi.setTableIndex(Integer.parseInt(indexData[2]));
+            indexReader.close();
+            return true;
         }catch(IOException e){
             e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean appendToTable(String data, String fileName){
+        try{
+            File table = new File(fileName);
+            FileWriter tableWriter = new FileWriter(table, true);
+            tableWriter.write(data+"\n");
+            tableWriter.close();
+            return true;
+        }catch(IOException e){
+            e.printStackTrace();
+            return false;
         }
     }
 

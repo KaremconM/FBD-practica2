@@ -3,6 +3,9 @@ import java.util.Calendar;
 
 public class Chofer extends Asociado{
     private static int choferCount;
+    public static String fileName = "ChoferData.csv";
+    public static String[] properties = {"choferId", "nombre", "apellidoMaterno", "apellidoPaterno", "foto", "email", "calle",
+    "colonia", "municipio", "estado", "numeroExterior", "numeroInterior", "numLicencia", "fechaInicio"};
     private int choferId;
 
     public Chofer(){
@@ -10,8 +13,6 @@ public class Chofer extends Asociado{
     }
 
     public String toString(){
-        String[] properties = {"choferId", "nombre", "apellidoMaterno", "apellidoPaterno", "foto", "email", "calle",
-        "colonia", "municipio", "estado", "numeroExterior", "numeroInterior", "numLicencia", "fechaInicio"};
         String prettyPrinted = "";
         for(String p : properties){
             prettyPrinted += this.get(p)+", ";
