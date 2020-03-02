@@ -118,4 +118,18 @@ public class FileActions{
         }
     }
 
+    public static boolean showTable(String tableName){
+        try{
+            File table = new File(tableName+"Data.csv");
+            Scanner tableReader = new Scanner(table);
+            while (tableReader.hasNextLine()){
+                System.out.println(tableReader.nextLine());
+            }
+            return true;
+        }catch(IOException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

@@ -15,9 +15,9 @@ public class Chofer extends Asociado{
     public String toString(){
         String prettyPrinted = "";
         for(String p : properties){
-            prettyPrinted += this.get(p)+", ";
+            prettyPrinted += this.get(p)+",";
         }
-        prettyPrinted = prettyPrinted.substring(0, prettyPrinted.length()-2);
+        prettyPrinted = prettyPrinted.substring(0, prettyPrinted.length()-1);
         return prettyPrinted;
     }
 

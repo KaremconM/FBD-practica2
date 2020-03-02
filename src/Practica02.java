@@ -14,6 +14,8 @@ public class Practica02 {
             int action = getAction();
             switch (action){
                 case 1:
+                    handleShow();
+                    break;
                 case 2:
                 case 3:
                     System.out.println(action);
@@ -162,6 +164,33 @@ public class Practica02 {
                     break;
                 case 2:
                     FileActions.dropTable("Dueño");
+                    validAction = true;
+                    break;
+                /*case 3:
+                    FileActions.dropTable("Taxi");
+                    break;*/
+                default:
+                    System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
+                    action = getAction();
+            }
+        }
+    }
+
+    public static void handleShow(){
+        System.out.println("Selecciona la tabla que quieres eliminar");
+        System.out.println("1.- Chofer");
+        System.out.println("2.- Dueño");
+        System.out.println("3.- Taxi");
+        boolean validAction = false;
+        int action = getAction();
+        while(!validAction){
+            switch(action){
+                case 1:
+                    FileActions.showTable("Chofer");
+                    validAction = true;
+                    break;
+                case 2:
+                    FileActions.showTable("Dueño");
                     validAction = true;
                     break;
                 /*case 3:
