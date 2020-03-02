@@ -99,7 +99,7 @@ public class Practica02 {
                     break;
                 case 2:
                     tableName = "Dueño";
-                    properties = Chofer.properties;
+                    properties = Dueño.properties;
                     validAction = true;
                     Dueño dueño = new Dueño();
                     System.out.println("Creando una entrada para: "+tableName);
