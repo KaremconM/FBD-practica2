@@ -10,7 +10,8 @@ public class Dueño extends Asociado{
     private String RFC;
 
     public Dueño(){
-        this.dueñoId = dueñoCount+1;
+        dueñoCount++;
+        this.dueñoId = dueñoCount;
     }
 
     public String toString(){

@@ -9,7 +9,8 @@ public class Chofer extends Asociado{
     private int choferId;
 
     public Chofer(){
-        this.choferId = choferCount+1;
+        choferCount++;
+        this.choferId = choferCount;
     }
 
     public String toString(){

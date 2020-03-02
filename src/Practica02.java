@@ -17,8 +17,11 @@ public class Practica02 {
                     handleShow();
                     break;
                 case 2:
+                    handleEdit();
+                    break;
                 case 3:
                     System.out.println(action);
+                    System.out.println("Entrada editada");
                     break;
                 case 4:
                     handleCreate();
@@ -56,7 +59,6 @@ public class Practica02 {
         }catch(NumberFormatException e){
             return 0;
         }
-
     }
 
     public static void handleCreate(){
@@ -177,7 +179,7 @@ public class Practica02 {
     }
 
     public static void handleShow(){
-        System.out.println("Selecciona la tabla que quieres eliminar");
+        System.out.println("Selecciona la tabla que quieres mostrar");
         System.out.println("1.- Chofer");
         System.out.println("2.- Dueño");
         System.out.println("3.- Taxi");
@@ -194,7 +196,7 @@ public class Practica02 {
                     validAction = true;
                     break;
                 /*case 3:
-                    FileActions.dropTable("Taxi");
+                    FileActions.showTable("Taxi");
                     break;*/
                 default:
                     System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
@@ -202,4 +204,51 @@ public class Practica02 {
             }
         }
     }
+
+    public static void handleEdit(){
+        System.out.println("Selecciona la tabla que quieres editar");
+        System.out.println("1.- Chofer");
+        System.out.println("2.- Dueño");
+        System.out.println("3.- Taxi");
+        boolean validAction = false;
+        int action = getAction();
+        String[] properties = {};
+        String tableName = "";
+        while(!validAction){
+            switch(action){
+                case 1:
+                    tableName = "Chofer";
+                    properties = Chofer.properties;
+                    validAction = true;
+                    break;
+                case 2:
+                    tableName = "Dueño";
+                    properties = Dueño.properties;
+                    validAction = true;
+                    break;
+                /*case 3:
+                    tableName = "Taxi"
+                    properties = Taxi.properties;
+                    validAction = true;
+                    break;*/
+                default:
+                    System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
+                    action = getAction();
+            }
+        }
+
+        System.out.println("Ingresa el ID del elemento a editar");
+        int id = getAction();
+        String newData = "";
+        for(String p : properties){
+            if(p!=properties[0]){
+                System.out.println("Ingresa el nuevo valor para: "+p);
+                String value = System.console().readLine();
+                newData += value+",";
+            }
+        }
+        newData = newData.substring(0, newData.length()-1);
+        FileActions.editEntry(tableName, newData, id);
+    }
+
 }
