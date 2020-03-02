@@ -34,6 +34,7 @@ public class Practica02 {
                     break;
                 case 6:
                     System.out.println("Saliendo...");
+                    //handleExit();
                     doActions = false;
                     break;
                 default:
@@ -121,11 +122,11 @@ public class Practica02 {
                     }
                     FileActions.appendToTable(dueño.toString(), tableName+"Data.csv");
                     break;
-                /*case 3:
+                case 3:
                     tableName = "Taxi";
                     properties = Taxi.properties;
                     validAction = true;
-                    Taxi c = new Taxi();
+                    Taxi taxi = new Taxi();
                     System.out.println("Creando una entrada para: "+tableName);
                     for(String p : properties){
                         if(p != "taxiId"){
@@ -134,7 +135,7 @@ public class Practica02 {
                             while(!validValue){
                                 try{
                                     String value = System.console().readLine();
-                                    chofer.set(p,value);
+                                    taxi.set(p,value);
                                     validValue = true;
                                 }catch(Exception e){
                                     System.out.println("Valor invalido para: "+p+" intenta de nuevo");
@@ -144,7 +145,7 @@ public class Practica02 {
                         }
                     }
                     FileActions.appendToTable(taxi.toString(), tableName+"Data.csv");
-                    break;*/
+                    break;
                 default:
                     System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
                     action = getAction();
@@ -169,9 +170,9 @@ public class Practica02 {
                     FileActions.dropTable("Dueño");
                     validAction = true;
                     break;
-                /*case 3:
+                case 3:
                     FileActions.dropTable("Taxi");
-                    break;*/
+                    break;
                 default:
                     System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
                     action = getAction();
@@ -196,9 +197,10 @@ public class Practica02 {
                     FileActions.showTable("Dueño");
                     validAction = true;
                     break;
-                /*case 3:
+                case 3:
                     FileActions.showTable("Taxi");
-                    break;*/
+                    validAction = true;
+                    break;
                 default:
                     System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
                     action = getAction();
@@ -227,11 +229,11 @@ public class Practica02 {
                     properties = Dueño.properties;
                     validAction = true;
                     break;
-                /*case 3:
-                    tableName = "Taxi"
+                case 3:
+                    tableName = "Taxi";
                     properties = Taxi.properties;
                     validAction = true;
-                    break;*/
+                    break;
                 default:
                     System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
                     action = getAction();
@@ -273,11 +275,11 @@ public class Practica02 {
                     properties = Dueño.properties;
                     validAction = true;
                     break;
-                /*case 3:
-                    tableName = "Taxi"
+                case 3:
+                    tableName = "Taxi";
                     properties = Taxi.properties;
                     validAction = true;
-                    break;*/
+                    break;
                 default:
                     System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
                     action = getAction();
@@ -288,4 +290,8 @@ public class Practica02 {
         int id = getAction();
         FileActions.destroyEntry(tableName, id);
     }
+
+    /*public static void handleExit(){
+        FileActions.saveIndex(Chofer.getCount(), Dueño.getCount(), 0/*Taxi.getCount());
+    }*/
 }

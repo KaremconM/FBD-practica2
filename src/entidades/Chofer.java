@@ -111,4 +111,8 @@ public class Chofer extends Asociado{
     public static void setTableIndex(int index){
         choferCount = index;
     }
+
+    public static int getCount(){
+        return choferCount;
+    }
 }

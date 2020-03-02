@@ -38,15 +38,15 @@ public class FileActions{
                 System.out.println("DueñoData file already exists.");
             }
 
-            /*File dueño = new File("DueñoData.csv");
-            if (dueño.createNewFile()) {
-                FileWriter dueñoWriter = new FileWriter("DueñoData.csv");
-                dueñoWriter.write("dueñoId,nombre,apellidoMaterno,apellidoPaterno,foto,email,calle,colonia,municipio,estado,numeroExterior,numeroInterior,numLicencia,fechaInicio,RFC");
-                dueñoWriter.close();
-                System.out.println("File created: " + dueño.getName());
+            File taxi = new File("TaxiData.csv");
+            if (taxi.createNewFile()) {
+                FileWriter taxiWriter = new FileWriter("TaxiData.csv");
+                taxiWriter.write("taxiId,año,numPuertas,numCilindros,marca,modelo,tieneRefaccion\n");
+                taxiWriter.close();
+                System.out.println("File created: " + taxi.getName());
             }else{
-                System.out.println("DueñoData file already exists.");
-            }*/
+                System.out.println("TaxiData file already exists.");
+            }
 
             return true;
         }catch (IOException e){
@@ -64,7 +64,7 @@ public class FileActions{
 
             Chofer.setTableIndex(Integer.parseInt(indexData[0]));
             Dueño.setTableIndex(Integer.parseInt(indexData[1]));
-            //Taxi.setTableIndex(Integer.parseInt(indexData[2]));
+            Taxi.setTableIndex(Integer.parseInt(indexData[2]));
             indexReader.close();
             return true;
         }catch(IOException e){
@@ -96,9 +96,9 @@ public class FileActions{
                 case "Dueño":
                     properties = Dueño.properties;
                     break;
-                /*case "Taxi":
+                case "Taxi":
                     properties = Taxi.properties;
-                    break;*/
+                    break;
                 default:
                     throw new IOException("Invalid table name");
             }

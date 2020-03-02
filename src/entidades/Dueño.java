@@ -117,4 +117,8 @@ public class Dueño extends Asociado{
     public static void setTableIndex(int index){
         dueñoCount = index;
     }
+
+    public static int getCount(){
+        return dueñoCount;
+    }
 }
