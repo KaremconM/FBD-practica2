@@ -3,21 +3,23 @@ import java.util.Calendar;
 
 public class Dueño extends Asociado{
     private static int dueñoCount;
+    public static String fileName = "DueñoData.csv";
+    public static String[] properties = {"dueñoId", "nombre", "apellidoPaterno", "apellidoMaterno", "foto", "email", "calle",
+    "colonia", "municipio", "estado", "numeroExterior", "numeroInterior", "numLicencia", "fechaInicio", "RFC"};
     private int dueñoId;
     private String RFC;
 
     public Dueño(){
-        this.dueñoId = dueñoCount+1;
+        dueñoCount++;
+        this.dueñoId = dueñoCount;
     }
 
     public String toString(){
-        String[] properties = {"dueñoId", "nombre", "apellidoMaterno", "apellidoPaterno", "foto", "email", "calle",
-        "colonia", "municipio", "estado", "numeroExterior", "numeroInterior", "numLicencia", "fechaInicio", "RFC"};
         String prettyPrinted = "";
         for(String p : properties){
-            prettyPrinted += this.get(p)+", ";
+            prettyPrinted += this.get(p)+",";
         }
-        prettyPrinted = prettyPrinted.substring(0, prettyPrinted.length()-2);
+        prettyPrinted = prettyPrinted.substring(0, prettyPrinted.length()-1);
         return prettyPrinted;
     }
 
@@ -114,5 +116,9 @@ public class Dueño extends Asociado{
 
     public static void setTableIndex(int index){
         dueñoCount = index;
+    }
+
+    public static int getCount(){
+        return dueñoCount;
     }
 }
