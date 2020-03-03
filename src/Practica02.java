@@ -2,6 +2,10 @@ import entidades.*;
 import utils.*;
 
 public class Practica02 {
+    /**
+    * Metodo principal maneja las acciones en la entrada de la consola
+    * @param args parametros de la consola (no usados)
+    */
     public static void main(String[] args) {
         System.out.println("Inciando base de datos...");
         if(!FileActions.createFiles() || !FileActions.setTableIndex()){
@@ -43,6 +47,9 @@ public class Practica02 {
         }
     }
 
+    /**
+    * Imprime el menu principal
+    */
     public static void printMenu(){
         System.out.println("**********MENU PRINCIPAL**********");
         System.out.println("Escribe solo el numero de la acción que deseas realizar");
@@ -54,6 +61,10 @@ public class Practica02 {
         System.out.println("6.- Salir");
     }
 
+    /**
+    * Regresa un entrero a partir de la entrada en la terminal
+    * @return Un numero entero que representa la entrada de la terminal
+    */
     public static int getAction(){
         try{
             int action = Integer.parseInt(System.console().readLine());
@@ -63,6 +74,9 @@ public class Practica02 {
         }
     }
 
+    /**
+    * Realiza las operaciones necesarias para crear una entrada en una tabla
+    */
     public static void handleCreate(){
         System.out.println("Selecciona la tabla en la cual quieres crear una entidad");
         System.out.println("1.- Chofer");
@@ -153,6 +167,9 @@ public class Practica02 {
         }
     }
 
+    /**
+    * Realiza las operaciones necesarias para borrar una tabla entera
+    */
     public static void handleDrop(){
         System.out.println("Selecciona la tabla que quieres eliminar");
         System.out.println("1.- Chofer");
@@ -180,6 +197,9 @@ public class Practica02 {
         }
     }
 
+    /**
+    * Realiza las operaciones necesarias para mostrar una tabla
+    */
     public static void handleShow(){
         System.out.println("Selecciona la tabla que quieres mostrar");
         System.out.println("1.- Chofer");
@@ -208,6 +228,9 @@ public class Practica02 {
         }
     }
 
+    /**
+    * Realiza las operaciones necesarias para editar una entrada en una tabla
+    */
     public static void handleEdit(){
         System.out.println("Selecciona la tabla que quieres editar");
         System.out.println("1.- Chofer");
@@ -254,6 +277,9 @@ public class Practica02 {
         FileActions.editEntry(tableName, newData, id);
     }
 
+    /**
+    * Realiza las operaciones necesarias para borrar una entrada en una tabla
+    */
     public static void handleDestroy(){
         System.out.println("Selecciona la tabla en la que quieres borrar una entrada");
         System.out.println("1.- Chofer");
