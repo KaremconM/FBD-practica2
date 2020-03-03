@@ -38,7 +38,7 @@ public class Practica02 {
                     break;
                 case 6:
                     System.out.println("Saliendo...");
-                    //handleExit();
+                    handleExit();
                     doActions = false;
                     break;
                 default:
@@ -189,6 +189,7 @@ public class Practica02 {
                     break;
                 case 3:
                     FileActions.dropTable("Taxi");
+                    validAction = true;
                     break;
                 default:
                     System.out.println("Ingresa solo el numero de la acción deseada (1-3)");
@@ -317,7 +318,10 @@ public class Practica02 {
         FileActions.destroyEntry(tableName, id);
     }
 
-    /*public static void handleExit(){
-        FileActions.saveIndex(Chofer.getCount(), Dueño.getCount(), 0/*Taxi.getCount());
-    }*/
+    /**
+    * Realiza las operaciones necesarias para terminar el programa
+    */
+    public static void handleExit(){
+        FileActions.saveIndex(Chofer.getCount(), Dueño.getCount(), Taxi.getCount());
+    }
 }

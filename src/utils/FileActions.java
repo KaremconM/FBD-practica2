@@ -46,15 +46,15 @@ public class FileActions{
                 System.out.println("DueñoData file already exists.");
             }
 
-            /*File dueño = new File("DueñoData.csv");
-            if (dueño.createNewFile()) {
-                FileWriter dueñoWriter = new FileWriter("DueñoData.csv");
-                dueñoWriter.write("dueñoId,nombre,apellidoMaterno,apellidoPaterno,foto,email,calle,colonia,municipio,estado,numeroExterior,numeroInterior,numLicencia,fechaInicio,RFC");
-                dueñoWriter.close();
-                System.out.println("File created: " + dueño.getName());
+            File taxi = new File("TaxiData.csv");
+            if (taxi.createNewFile()) {
+                FileWriter taxiWriter = new FileWriter("TaxiData.csv");
+                taxiWriter.write("taxiId,año,numPuertas,numCilindros,marca,modelo,tieneRefaccion\n");
+                taxiWriter.close();
+                System.out.println("File created: " + taxi.getName());
             }else{
-                System.out.println("DueñoData file already exists.");
-            }*/
+                System.out.println("TaxiData file already exists.");
+            }
 
             return true;
         }catch (IOException e){
@@ -118,9 +118,9 @@ public class FileActions{
                 case "Dueño":
                     properties = Dueño.properties;
                     break;
-                /*case "Taxi":
+                case "Taxi":
                     properties = Taxi.properties;
-                    break;*/
+                    break;
                 default:
                     throw new IOException("Invalid table name");
             }
@@ -240,6 +240,24 @@ public class FileActions{
 
         }catch(IOException e){
             e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+    * Guarda los indices de las tablas en un archivo para que haya persistencia al cargar el programa de nuevo
+    * @param choferIndex indice de la tabla chofer
+    * @param dueñoIndex indice de la tabla dueño
+    * @param taxiIndex indice de la tabla taxi
+    * @return estado de la operacion
+    */
+    public static boolean saveIndex(int choferIndex, int dueñoIndex, int taxiIndex){
+        try{
+            FileWriter indexWriter = new FileWriter("tableIndex.csv");
+            indexWriter.write("chofer,dueño,taxi\n"+choferIndex+","+dueñoIndex+","+taxiIndex);
+            indexWriter.close();
+            return true;
+        }catch(IOException e){
             return false;
         }
     }
